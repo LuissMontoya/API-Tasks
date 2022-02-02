@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Mis Tareas</h3>
+
+      <table class="table table-hover mt-5">
+        <thead>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Completado</th>
+              <th></th>
+            </tr>
+          </thead>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tarea of tareas">
+            <td>{{ tarea.nombre }}</td>
+            <td>{{ tarea.estado }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <h3>Nueva Tarea</h3>
+
+      <form class="mt-5">
+        <div class="mb-2">
+          <label for="nombre">Nombre</label>
+          <Input
+            id="nombre"
+            type="text"
+            placeholder="Nombre"
+            class="form-control"
+          />
+        </div>
+      </form>
+
+      <div class="mb-2 form-check">
+        <label>
+          <Input type="checkbox" class="form-check-input" /> Completado</label>
+      </div>
+
+      <div class="text-end">
+      <button class="btn btn-primary">Guardar</button>
+    </div>
+
+    </div>
+  </div>
+</div>
