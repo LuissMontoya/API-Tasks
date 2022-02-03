@@ -15,7 +15,7 @@ public class Tarea {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nombre;
-    private boolean estado;
+    private boolean completado;
 
 
 }

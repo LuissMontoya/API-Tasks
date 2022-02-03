@@ -19,7 +19,7 @@ export class TareaService {
     return this.http.put('http://localhost:8080/api/tareas/' + id, tarea);
   }
 
-  delete(id: number) {
-    return this.http.delete('http://localhost:8080/api/tareas/' + id);
+  delete(href:string) {
+    return this.http.delete(href);
   }
 }
