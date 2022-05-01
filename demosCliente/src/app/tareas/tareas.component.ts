@@ -9,10 +9,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TareasComponent implements OnInit {
   tareas: any[] = [];
+
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', Validators.required],
     completado: [false],
   });
+
   tareaEdicion: any;
 
   constructor(private tareaService: TareaService, private fb: FormBuilder) {}
@@ -23,7 +25,7 @@ export class TareasComponent implements OnInit {
 
   getAll() {
     this.tareaService.getAll().subscribe((tareas: any) => {
-      console.log('Tareas ', tareas);
+      //console.log('Tareas ', tareas);
       this.tareas = tareas._embedded.tareas;
     });
   }
@@ -31,7 +33,7 @@ export class TareasComponent implements OnInit {
   save() {
     const values = this.miFormulario.value;
 
-    console.log('values: ', values);
+    //console.log('values: ', values);
 
     let request;
 
@@ -57,7 +59,6 @@ export class TareasComponent implements OnInit {
     });
   }
 
-
   delete(tarea: any) {
     const respuesta = confirm('Desea Eliminar esta Tarea ?');
     if (respuesta) {
@@ -76,6 +77,4 @@ export class TareasComponent implements OnInit {
       completado: tarea.completado,
     });
   }
-
-
 }

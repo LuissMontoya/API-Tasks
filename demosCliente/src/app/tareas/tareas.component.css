@@ -1,0 +1,17 @@
+#divDerecha {
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+#divIzquierda {
+  text-align: center;
+}
+
+
+.card{
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+  width: 50%;
+}

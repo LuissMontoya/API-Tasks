@@ -1,5 +1,43 @@
 <div class="container">
-  <div class="row">
+  <div class="row" >
+    <div class="col-md-6" id="divIzquierda">
+      <h3>{{ tareaEdicion ? "Editar Tarea" : "Nueva Tarea" }}</h3>
+
+      <form
+        class="mt-5"
+        [formGroup]="miFormulario"
+        (ngSubmit)="save()"
+        autocomplete="off"
+      >
+        <div class="mb-2">
+          <label for="nombre"><h4>Tarea</h4></label>
+          <input
+            id="nombre"
+            type="text"
+            placeholder="Digite la nueva tarea.."
+            class="form-control"
+            formControlName="nombre"
+          />
+        </div>
+
+        <div class="mb-2 form-check">
+          <label>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              formControlName="completado"
+            />
+            completado</label
+          >
+        </div>
+
+        <div class="text-end">
+          <button class="btn btn-dark">Guardar</button>
+        </div>
+      </form>
+    </div>
+
+    <!--
     <div class="col-md-6">
       <h3>Mis Tareas</h3>
 
@@ -21,53 +59,53 @@
             <td>
 
               <div class="btn-group btn-group-sm">
-                <button class="btn btn-primary" (click)="edit(tarea)">Editar</button>
+                <div class="col">
+                  <button class="btn btn-primary" (click)="edit(tarea)" style="margin: 4px;">Editar</button>
 
-              <button class="btn btn-danger" (click)="delete(tarea)">
-                Eliminar
-              </button>
+                  <button class="btn btn-danger" (click)="delete(tarea)">
+                    Eliminar
+                  </button>
+                </div>
+
               </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+-->
 
-    <div class="col-md-6">
-      <h3>{{ tareaEdicion ? 'Editar Tarea' : 'Nueva Tarea' }}</h3>
+<div class="col-md-6" id="divDerecha">
+  <h3>Mis Tareas</h3>
 
-      <form
-        class="mt-5"
-        [formGroup]="miFormulario"
-        (ngSubmit)="save()"
-        autocomplete="off"
-      >
-        <div class="mb-2">
-          <label for="nombre">Nombre</label>
-          <input
-            id="nombre"
-            type="text"
-            placeholder="Nombre"
-            class="form-control"
-            formControlName="nombre"
-          />
+  <br>
+
+  <div class="card text-white bg-dark mb-3" style="max-width: 18rem" *ngFor="let tarea of tareas; let indice=index">
+    <div class="card-header"> {{ 'Tarea '+(indice+1)+'.' }}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{ tarea.nombre }}</h5>
+      <p class="card-text"> Completado:
+        <span *ngIf="tarea.completado; else tareaIncompleta">Sí</span>
+        <ng-template #tareaIncompleta> No </ng-template> </p>
+
+        <div class="btn-group btn-group-sm">
+          <div class="col">
+            <button class="btn btn-primary" (click)="edit(tarea)" style="margin: 4px;">Editar</button>
+
+            <button class="btn btn-danger" (click)="delete(tarea)">
+              Eliminar
+            </button>
+          </div>
+
         </div>
 
-        <div class="mb-2 form-check">
-          <label>
-            <input
-              type="checkbox"
-              class="form-check-input"
-              formControlName="completado"
-            />
-            completado</label
-          >
-        </div>
-
-        <div class="text-end">
-          <button class="btn btn-primary">Guardar</button>
-        </div>
-      </form>
     </div>
+  </div>
+</div>
+
+
+
+
+
   </div>
 </div>
